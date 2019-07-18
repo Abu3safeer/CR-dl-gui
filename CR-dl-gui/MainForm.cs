@@ -107,6 +107,12 @@ namespace CR_dl_gui
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(Properties.Settings.Default.language);
                 Controls.Clear();
                 InitializeComponent();
+                this.RightToLeft = (Properties.Settings.Default.RightToLeft) ? RightToLeft.Yes : RightToLeft.No;
+                this.RightToLeftLayout = Properties.Settings.Default.RightToLeftLayout;
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
             }
 
             //Load settings
@@ -117,11 +123,15 @@ namespace CR_dl_gui
         private void EnglishLanguage_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.language = "en";
+            Properties.Settings.Default.RightToLeft = false;
+            Properties.Settings.Default.RightToLeftLayout = false;
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Reload();
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
             Controls.Clear();
             InitializeComponent();
+            this.RightToLeft = RightToLeft.No;
+            this.RightToLeftLayout = false;
 
             //Load settings
             UpdateEverything();
@@ -130,11 +140,15 @@ namespace CR_dl_gui
         private void ArabicLanguage_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.language = "ar";
+            Properties.Settings.Default.RightToLeft = true;
+            Properties.Settings.Default.RightToLeftLayout = true;
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Reload();
             Thread.CurrentThread.CurrentUICulture = new CultureInfo("ar");
             Controls.Clear();
             InitializeComponent();
+            this.RightToLeft = RightToLeft.Yes;
+            this.RightToLeftLayout = true;
 
             //Load settings
             UpdateEverything();
