@@ -212,18 +212,6 @@
   <data name="LanguageMenuItem.Text" xml:space="preserve">
     <value>اللغة</value>
   </data>
-  <data name="EnglishLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 22</value>
-  </data>
-  <data name="ArabicLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 22</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
-    <value>حول</value>
-  </data>
   <data name="cRdlGithubToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 22</value>
   </data>
@@ -236,12 +224,11 @@
   <data name="cRdlguiGithubToolStripMenuItem.Text" xml:space="preserve">
     <value>رابط CR-dl-gui github</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TypeControl.RightToLeftLayout" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
-  <data name="Softsub.Text" xml:space="preserve">
-    <value>سوفت سب</value>
+  <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
+    <value>حول</value>
   </data>
   <data name="ExecuteSoftsubCommand.Text" xml:space="preserve">
     <value>تنزيل</value>
@@ -309,8 +296,8 @@
   <data name="SpecifySubtitleLanguages.Text" xml:space="preserve">
     <value>تحديد لغة الترجمات</value>
   </data>
-  <data name="Hardsub.Text" xml:space="preserve">
-    <value>هارد سب</value>
+  <data name="Softsub.Text" xml:space="preserve">
+    <value>سوفت سب</value>
   </data>
   <data name="ExecuteHardsubCommand.Text" xml:space="preserve">
     <value>تنزيل</value>
@@ -321,6 +308,9 @@
   <data name="HardsubSaveDirectory.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
   </data>
+  <data name="HardsubSaveDirectory.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
   <data name="HardsubSaveDirectoryLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>541, 9</value>
   </data>
@@ -329,6 +319,13 @@
   </data>
   <data name="HardsubSaveDirectoryLabel.Text" xml:space="preserve">
     <value>حفظ إلى:</value>
+  </data>
+  <data name="Hardsub.Text" xml:space="preserve">
+    <value>هارد سب</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TypeControl.RightToLeftLayout" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="URL.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>

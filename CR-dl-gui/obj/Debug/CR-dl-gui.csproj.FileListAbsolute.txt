@@ -12,3 +12,4 @@ C:\Users\Abu3safeer\source\repos\CR-dl-gui\CR-dl-gui\bin\Debug\ar\CR-dl-gui.reso
 C:\Users\Abu3safeer\source\repos\CR-dl-gui\CR-dl-gui\obj\Debug\CR_dl_gui.MainForm.ar.resources
 C:\Users\Abu3safeer\source\repos\CR-dl-gui\CR-dl-gui\obj\Debug\ar\CR-dl-gui.resources.dll
 C:\Users\Abu3safeer\source\repos\CR-dl-gui\CR-dl-gui\obj\Debug\CR_dl_gui.Properties.Strings.ar.resources
+C:\Users\Abu3safeer\source\repos\CR-dl-gui\CR-dl-gui\obj\Debug\CR-dl-gui.csprojAssemblyReference.cache

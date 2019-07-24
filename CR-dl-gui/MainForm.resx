@@ -616,7 +616,7 @@
     <value>Password</value>
   </data>
   <data name="ArabicLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="&gt;&gt;cRdlGithubToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1420,7 +1420,7 @@
     <value>ProxyForVideo</value>
   </data>
   <data name="EnglishLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>112, 22</value>
   </data>
   <data name="SubtitleLanguages.Items2" xml:space="preserve">
     <value>enGB</value>
@@ -1609,7 +1609,7 @@
     <value>66, 17</value>
   </data>
   <data name="cRdlguiGithubToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="CookiesFileFound.Text" xml:space="preserve">
     <value>Cookies file found</value>
@@ -1777,7 +1777,7 @@
     <value>1080p</value>
   </data>
   <data name="cRdlGithubToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>164, 22</value>
   </data>
   <data name="&gt;&gt;LegacyPlayer.Name" xml:space="preserve">
     <value>LegacyPlayer</value>
@@ -1808,6 +1808,9 @@
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ar</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
