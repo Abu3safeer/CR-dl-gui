@@ -88,7 +88,7 @@ namespace CR_dl_gui
 
         public void CheckCookiesFile()
         {
-            if (File.Exists("cookies.data"))
+            if (File.Exists("cookies.txt"))
             {
                 CookiesFileFound.Visible = true;
                 CookiesFileNotFound.Visible = false;
@@ -259,7 +259,7 @@ namespace CR_dl_gui
 
         private void DeleteLoginFile_Click(object sender, EventArgs e)
         {
-            File.Delete("cookies.data");
+            File.Delete("cookies.txt");
             CheckCookiesFile();
         }
 
