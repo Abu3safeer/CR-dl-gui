@@ -61,6 +61,24 @@ namespace CR_dl_gui.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Batch file.
+        /// </summary>
+        internal static string BatchFile {
+            get {
+                return ResourceManager.GetString("BatchFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Batch file.
+        /// </summary>
+        internal static string SaveBatchFile {
+            get {
+                return ResourceManager.GetString("SaveBatchFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings have been saved succefully..
         /// </summary>
         internal static string SaveMessageBody {

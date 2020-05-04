@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AccountGroupBox = new System.Windows.Forms.GroupBox();
+            this.MakeLoginBatchFile = new System.Windows.Forms.Button();
             this.ChangeLanguage = new System.Windows.Forms.Button();
             this.SiteLanguage = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,6 +55,7 @@
             this.cRdlguiGithubToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TypeControl = new System.Windows.Forms.TabControl();
             this.Softsub = new System.Windows.Forms.TabPage();
+            this.SoftsubSaveButton = new System.Windows.Forms.Button();
             this.ExecuteSoftsubCommand = new System.Windows.Forms.Button();
             this.SoftsubCommand = new System.Windows.Forms.TextBox();
             this.ListSubtitles = new System.Windows.Forms.CheckBox();
@@ -64,6 +67,7 @@
             this.SubtitleLanguages = new System.Windows.Forms.ListBox();
             this.SpecifySubtitleLanguages = new System.Windows.Forms.CheckBox();
             this.Hardsub = new System.Windows.Forms.TabPage();
+            this.HardsubSaveButton = new System.Windows.Forms.Button();
             this.ExecuteHardsubCommand = new System.Windows.Forms.Button();
             this.HardsubCommand = new System.Windows.Forms.TextBox();
             this.HardsubSaveDirectory = new System.Windows.Forms.TextBox();
@@ -86,10 +90,10 @@
             this.UseSeasons = new System.Windows.Forms.CheckBox();
             this.UseEpisodes = new System.Windows.Forms.CheckBox();
             this.UseResolution = new System.Windows.Forms.CheckBox();
-            this.Season = new System.Windows.Forms.NumericUpDown();
-            this.Episode = new System.Windows.Forms.NumericUpDown();
-            this.UseSeason = new System.Windows.Forms.CheckBox();
-            this.UseEpisode = new System.Windows.Forms.CheckBox();
+            this.TheToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.NoProgressBar = new System.Windows.Forms.CheckBox();
+            this.CookiesFile = new System.Windows.Forms.CheckBox();
+            this.CookiesFilePath = new System.Windows.Forms.TextBox();
             this.AccountGroupBox.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.TypeControl.SuspendLayout();
@@ -97,13 +101,12 @@
             this.Hardsub.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionsNumber)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Attempts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Season)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Episode)).BeginInit();
             this.SuspendLayout();
             // 
             // AccountGroupBox
             // 
             resources.ApplyResources(this.AccountGroupBox, "AccountGroupBox");
+            this.AccountGroupBox.Controls.Add(this.MakeLoginBatchFile);
             this.AccountGroupBox.Controls.Add(this.ChangeLanguage);
             this.AccountGroupBox.Controls.Add(this.SiteLanguage);
             this.AccountGroupBox.Controls.Add(this.label1);
@@ -119,11 +122,21 @@
             this.AccountGroupBox.Controls.Add(this.CookiesFileLabel);
             this.AccountGroupBox.Name = "AccountGroupBox";
             this.AccountGroupBox.TabStop = false;
+            this.TheToolTip.SetToolTip(this.AccountGroupBox, resources.GetString("AccountGroupBox.ToolTip"));
+            // 
+            // MakeLoginBatchFile
+            // 
+            resources.ApplyResources(this.MakeLoginBatchFile, "MakeLoginBatchFile");
+            this.MakeLoginBatchFile.Name = "MakeLoginBatchFile";
+            this.TheToolTip.SetToolTip(this.MakeLoginBatchFile, resources.GetString("MakeLoginBatchFile.ToolTip"));
+            this.MakeLoginBatchFile.UseVisualStyleBackColor = true;
+            this.MakeLoginBatchFile.Click += new System.EventHandler(this.MakeLoginBatchFile_Click);
             // 
             // ChangeLanguage
             // 
             resources.ApplyResources(this.ChangeLanguage, "ChangeLanguage");
             this.ChangeLanguage.Name = "ChangeLanguage";
+            this.TheToolTip.SetToolTip(this.ChangeLanguage, resources.GetString("ChangeLanguage.ToolTip"));
             this.ChangeLanguage.UseVisualStyleBackColor = true;
             this.ChangeLanguage.Click += new System.EventHandler(this.ChangeLanguage_Click);
             // 
@@ -144,17 +157,20 @@
             resources.GetString("SiteLanguage.Items9"),
             resources.GetString("SiteLanguage.Items10")});
             this.SiteLanguage.Name = "SiteLanguage";
+            this.TheToolTip.SetToolTip(this.SiteLanguage, resources.GetString("SiteLanguage.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.TheToolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // DeleteLoginFile
             // 
             resources.ApplyResources(this.DeleteLoginFile, "DeleteLoginFile");
             this.DeleteLoginFile.ForeColor = System.Drawing.Color.Red;
             this.DeleteLoginFile.Name = "DeleteLoginFile";
+            this.TheToolTip.SetToolTip(this.DeleteLoginFile, resources.GetString("DeleteLoginFile.ToolTip"));
             this.DeleteLoginFile.UseVisualStyleBackColor = true;
             this.DeleteLoginFile.Click += new System.EventHandler(this.DeleteLoginFile_Click);
             // 
@@ -163,17 +179,20 @@
             resources.ApplyResources(this.CookiesFileNotFound, "CookiesFileNotFound");
             this.CookiesFileNotFound.ForeColor = System.Drawing.Color.Red;
             this.CookiesFileNotFound.Name = "CookiesFileNotFound";
+            this.TheToolTip.SetToolTip(this.CookiesFileNotFound, resources.GetString("CookiesFileNotFound.ToolTip"));
             // 
             // CookiesFileFound
             // 
             resources.ApplyResources(this.CookiesFileFound, "CookiesFileFound");
             this.CookiesFileFound.ForeColor = System.Drawing.Color.Green;
             this.CookiesFileFound.Name = "CookiesFileFound";
+            this.TheToolTip.SetToolTip(this.CookiesFileFound, resources.GetString("CookiesFileFound.ToolTip"));
             // 
             // ShowPassword
             // 
             resources.ApplyResources(this.ShowPassword, "ShowPassword");
             this.ShowPassword.Name = "ShowPassword";
+            this.TheToolTip.SetToolTip(this.ShowPassword, resources.GetString("ShowPassword.ToolTip"));
             this.ShowPassword.UseVisualStyleBackColor = true;
             this.ShowPassword.CheckedChanged += new System.EventHandler(this.ShowPassword_CheckedChanged);
             // 
@@ -181,6 +200,7 @@
             // 
             resources.ApplyResources(this.Login, "Login");
             this.Login.Name = "Login";
+            this.TheToolTip.SetToolTip(this.Login, resources.GetString("Login.ToolTip"));
             this.Login.UseVisualStyleBackColor = true;
             this.Login.Click += new System.EventHandler(this.Login_Click);
             // 
@@ -188,32 +208,38 @@
             // 
             resources.ApplyResources(this.Password, "Password");
             this.Password.Name = "Password";
+            this.TheToolTip.SetToolTip(this.Password, resources.GetString("Password.ToolTip"));
             this.Password.UseSystemPasswordChar = true;
             // 
             // EmailOrUserName
             // 
             resources.ApplyResources(this.EmailOrUserName, "EmailOrUserName");
             this.EmailOrUserName.Name = "EmailOrUserName";
+            this.TheToolTip.SetToolTip(this.EmailOrUserName, resources.GetString("EmailOrUserName.ToolTip"));
             // 
             // PasswordLabel
             // 
             resources.ApplyResources(this.PasswordLabel, "PasswordLabel");
             this.PasswordLabel.Name = "PasswordLabel";
+            this.TheToolTip.SetToolTip(this.PasswordLabel, resources.GetString("PasswordLabel.ToolTip"));
             // 
             // EmailOrUserNameLabel
             // 
             resources.ApplyResources(this.EmailOrUserNameLabel, "EmailOrUserNameLabel");
             this.EmailOrUserNameLabel.Name = "EmailOrUserNameLabel";
+            this.TheToolTip.SetToolTip(this.EmailOrUserNameLabel, resources.GetString("EmailOrUserNameLabel.ToolTip"));
             // 
             // CookiesFileLabel
             // 
             resources.ApplyResources(this.CookiesFileLabel, "CookiesFileLabel");
             this.CookiesFileLabel.Name = "CookiesFileLabel";
+            this.TheToolTip.SetToolTip(this.CookiesFileLabel, resources.GetString("CookiesFileLabel.ToolTip"));
             // 
             // Save
             // 
             resources.ApplyResources(this.Save, "Save");
             this.Save.Name = "Save";
+            this.TheToolTip.SetToolTip(this.Save, resources.GetString("Save.ToolTip"));
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
@@ -224,6 +250,7 @@
             this.LanguageMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip1.Name = "menuStrip1";
+            this.TheToolTip.SetToolTip(this.menuStrip1, resources.GetString("menuStrip1.ToolTip"));
             // 
             // LanguageMenuItem
             // 
@@ -272,10 +299,12 @@
             this.TypeControl.Controls.Add(this.Hardsub);
             this.TypeControl.Name = "TypeControl";
             this.TypeControl.SelectedIndex = 0;
+            this.TheToolTip.SetToolTip(this.TypeControl, resources.GetString("TypeControl.ToolTip"));
             // 
             // Softsub
             // 
             resources.ApplyResources(this.Softsub, "Softsub");
+            this.Softsub.Controls.Add(this.SoftsubSaveButton);
             this.Softsub.Controls.Add(this.ExecuteSoftsubCommand);
             this.Softsub.Controls.Add(this.SoftsubCommand);
             this.Softsub.Controls.Add(this.ListSubtitles);
@@ -287,12 +316,22 @@
             this.Softsub.Controls.Add(this.SubtitleLanguages);
             this.Softsub.Controls.Add(this.SpecifySubtitleLanguages);
             this.Softsub.Name = "Softsub";
+            this.TheToolTip.SetToolTip(this.Softsub, resources.GetString("Softsub.ToolTip"));
             this.Softsub.UseVisualStyleBackColor = true;
+            // 
+            // SoftsubSaveButton
+            // 
+            resources.ApplyResources(this.SoftsubSaveButton, "SoftsubSaveButton");
+            this.SoftsubSaveButton.Name = "SoftsubSaveButton";
+            this.TheToolTip.SetToolTip(this.SoftsubSaveButton, resources.GetString("SoftsubSaveButton.ToolTip"));
+            this.SoftsubSaveButton.UseVisualStyleBackColor = true;
+            this.SoftsubSaveButton.Click += new System.EventHandler(this.SoftsubSaveButton_Click);
             // 
             // ExecuteSoftsubCommand
             // 
             resources.ApplyResources(this.ExecuteSoftsubCommand, "ExecuteSoftsubCommand");
             this.ExecuteSoftsubCommand.Name = "ExecuteSoftsubCommand";
+            this.TheToolTip.SetToolTip(this.ExecuteSoftsubCommand, resources.GetString("ExecuteSoftsubCommand.ToolTip"));
             this.ExecuteSoftsubCommand.UseVisualStyleBackColor = true;
             this.ExecuteSoftsubCommand.Click += new System.EventHandler(this.ExecuteSoftsubCommand_Click);
             // 
@@ -301,11 +340,13 @@
             resources.ApplyResources(this.SoftsubCommand, "SoftsubCommand");
             this.SoftsubCommand.Name = "SoftsubCommand";
             this.SoftsubCommand.ReadOnly = true;
+            this.TheToolTip.SetToolTip(this.SoftsubCommand, resources.GetString("SoftsubCommand.ToolTip"));
             // 
             // ListSubtitles
             // 
             resources.ApplyResources(this.ListSubtitles, "ListSubtitles");
             this.ListSubtitles.Name = "ListSubtitles";
+            this.TheToolTip.SetToolTip(this.ListSubtitles, resources.GetString("ListSubtitles.ToolTip"));
             this.ListSubtitles.UseVisualStyleBackColor = true;
             this.ListSubtitles.CheckedChanged += new System.EventHandler(this.ListSubtitles_CheckedChanged);
             // 
@@ -313,6 +354,7 @@
             // 
             resources.ApplyResources(this.SubtitltesOnly, "SubtitltesOnly");
             this.SubtitltesOnly.Name = "SubtitltesOnly";
+            this.TheToolTip.SetToolTip(this.SubtitltesOnly, resources.GetString("SubtitltesOnly.ToolTip"));
             this.SubtitltesOnly.UseVisualStyleBackColor = true;
             this.SubtitltesOnly.CheckedChanged += new System.EventHandler(this.SubtitltesOnly_CheckedChanged);
             // 
@@ -320,19 +362,20 @@
             // 
             resources.ApplyResources(this.SoftsubSaveDirectory, "SoftsubSaveDirectory");
             this.SoftsubSaveDirectory.Name = "SoftsubSaveDirectory";
+            this.TheToolTip.SetToolTip(this.SoftsubSaveDirectory, resources.GetString("SoftsubSaveDirectory.ToolTip"));
             this.SoftsubSaveDirectory.TextChanged += new System.EventHandler(this.SoftsubSaveDirectory_TextChanged);
             // 
             // SoftsubSaveDirectoryLabel
             // 
             resources.ApplyResources(this.SoftsubSaveDirectoryLabel, "SoftsubSaveDirectoryLabel");
             this.SoftsubSaveDirectoryLabel.Name = "SoftsubSaveDirectoryLabel";
+            this.TheToolTip.SetToolTip(this.SoftsubSaveDirectoryLabel, resources.GetString("SoftsubSaveDirectoryLabel.ToolTip"));
             // 
             // LegacyPlayer
             // 
             resources.ApplyResources(this.LegacyPlayer, "LegacyPlayer");
-            this.LegacyPlayer.Checked = true;
-            this.LegacyPlayer.CheckState = System.Windows.Forms.CheckState.Checked;
             this.LegacyPlayer.Name = "LegacyPlayer";
+            this.TheToolTip.SetToolTip(this.LegacyPlayer, resources.GetString("LegacyPlayer.ToolTip"));
             this.LegacyPlayer.UseVisualStyleBackColor = true;
             this.LegacyPlayer.CheckedChanged += new System.EventHandler(this.LegacyPlayer_CheckedChanged);
             // 
@@ -342,6 +385,7 @@
             this.AttachFonts.Checked = true;
             this.AttachFonts.CheckState = System.Windows.Forms.CheckState.Checked;
             this.AttachFonts.Name = "AttachFonts";
+            this.TheToolTip.SetToolTip(this.AttachFonts, resources.GetString("AttachFonts.ToolTip"));
             this.AttachFonts.UseVisualStyleBackColor = true;
             this.AttachFonts.CheckedChanged += new System.EventHandler(this.AttachFonts_CheckedChanged);
             // 
@@ -363,29 +407,42 @@
             resources.GetString("SubtitleLanguages.Items10")});
             this.SubtitleLanguages.Name = "SubtitleLanguages";
             this.SubtitleLanguages.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.TheToolTip.SetToolTip(this.SubtitleLanguages, resources.GetString("SubtitleLanguages.ToolTip"));
             this.SubtitleLanguages.SelectedIndexChanged += new System.EventHandler(this.SubtitleLanguages_SelectedIndexChanged);
             // 
             // SpecifySubtitleLanguages
             // 
             resources.ApplyResources(this.SpecifySubtitleLanguages, "SpecifySubtitleLanguages");
             this.SpecifySubtitleLanguages.Name = "SpecifySubtitleLanguages";
+            this.TheToolTip.SetToolTip(this.SpecifySubtitleLanguages, resources.GetString("SpecifySubtitleLanguages.ToolTip"));
             this.SpecifySubtitleLanguages.UseVisualStyleBackColor = true;
             this.SpecifySubtitleLanguages.CheckedChanged += new System.EventHandler(this.SpecifySubtitleLanguages_CheckedChanged);
             // 
             // Hardsub
             // 
             resources.ApplyResources(this.Hardsub, "Hardsub");
+            this.Hardsub.Controls.Add(this.HardsubSaveButton);
             this.Hardsub.Controls.Add(this.ExecuteHardsubCommand);
             this.Hardsub.Controls.Add(this.HardsubCommand);
             this.Hardsub.Controls.Add(this.HardsubSaveDirectory);
             this.Hardsub.Controls.Add(this.HardsubSaveDirectoryLabel);
             this.Hardsub.Name = "Hardsub";
+            this.TheToolTip.SetToolTip(this.Hardsub, resources.GetString("Hardsub.ToolTip"));
             this.Hardsub.UseVisualStyleBackColor = true;
+            // 
+            // HardsubSaveButton
+            // 
+            resources.ApplyResources(this.HardsubSaveButton, "HardsubSaveButton");
+            this.HardsubSaveButton.Name = "HardsubSaveButton";
+            this.TheToolTip.SetToolTip(this.HardsubSaveButton, resources.GetString("HardsubSaveButton.ToolTip"));
+            this.HardsubSaveButton.UseVisualStyleBackColor = true;
+            this.HardsubSaveButton.Click += new System.EventHandler(this.HardsubSaveButton_Click);
             // 
             // ExecuteHardsubCommand
             // 
             resources.ApplyResources(this.ExecuteHardsubCommand, "ExecuteHardsubCommand");
             this.ExecuteHardsubCommand.Name = "ExecuteHardsubCommand";
+            this.TheToolTip.SetToolTip(this.ExecuteHardsubCommand, resources.GetString("ExecuteHardsubCommand.ToolTip"));
             this.ExecuteHardsubCommand.UseVisualStyleBackColor = true;
             this.ExecuteHardsubCommand.Click += new System.EventHandler(this.ExecuteHardsubCommand_Click);
             // 
@@ -394,44 +451,52 @@
             resources.ApplyResources(this.HardsubCommand, "HardsubCommand");
             this.HardsubCommand.Name = "HardsubCommand";
             this.HardsubCommand.ReadOnly = true;
+            this.TheToolTip.SetToolTip(this.HardsubCommand, resources.GetString("HardsubCommand.ToolTip"));
             // 
             // HardsubSaveDirectory
             // 
             resources.ApplyResources(this.HardsubSaveDirectory, "HardsubSaveDirectory");
             this.HardsubSaveDirectory.Name = "HardsubSaveDirectory";
+            this.TheToolTip.SetToolTip(this.HardsubSaveDirectory, resources.GetString("HardsubSaveDirectory.ToolTip"));
             this.HardsubSaveDirectory.TextChanged += new System.EventHandler(this.HardsubSaveDirectory_TextChanged);
             // 
             // HardsubSaveDirectoryLabel
             // 
             resources.ApplyResources(this.HardsubSaveDirectoryLabel, "HardsubSaveDirectoryLabel");
             this.HardsubSaveDirectoryLabel.Name = "HardsubSaveDirectoryLabel";
+            this.TheToolTip.SetToolTip(this.HardsubSaveDirectoryLabel, resources.GetString("HardsubSaveDirectoryLabel.ToolTip"));
             // 
             // URL
             // 
             resources.ApplyResources(this.URL, "URL");
             this.URL.Name = "URL";
+            this.TheToolTip.SetToolTip(this.URL, resources.GetString("URL.ToolTip"));
             this.URL.TextChanged += new System.EventHandler(this.URL_TextChanged);
             // 
             // URLLabel
             // 
             resources.ApplyResources(this.URLLabel, "URLLabel");
             this.URLLabel.Name = "URLLabel";
+            this.TheToolTip.SetToolTip(this.URLLabel, resources.GetString("URLLabel.ToolTip"));
             // 
             // Proxy
             // 
             resources.ApplyResources(this.Proxy, "Proxy");
             this.Proxy.Name = "Proxy";
+            this.TheToolTip.SetToolTip(this.Proxy, resources.GetString("Proxy.ToolTip"));
             this.Proxy.TextChanged += new System.EventHandler(this.Proxy_TextChanged);
             // 
             // ProxyLabel
             // 
             resources.ApplyResources(this.ProxyLabel, "ProxyLabel");
             this.ProxyLabel.Name = "ProxyLabel";
+            this.TheToolTip.SetToolTip(this.ProxyLabel, resources.GetString("ProxyLabel.ToolTip"));
             // 
             // UseProxy
             // 
             resources.ApplyResources(this.UseProxy, "UseProxy");
             this.UseProxy.Name = "UseProxy";
+            this.TheToolTip.SetToolTip(this.UseProxy, resources.GetString("UseProxy.ToolTip"));
             this.UseProxy.UseVisualStyleBackColor = true;
             this.UseProxy.CheckedChanged += new System.EventHandler(this.UseProxy_CheckedChanged);
             // 
@@ -446,12 +511,14 @@
             resources.GetString("Resolution.Items3"),
             resources.GetString("Resolution.Items4")});
             this.Resolution.Name = "Resolution";
+            this.TheToolTip.SetToolTip(this.Resolution, resources.GetString("Resolution.ToolTip"));
             this.Resolution.SelectedIndexChanged += new System.EventHandler(this.Resolution_SelectedIndexChanged);
             // 
             // DefaultSubtitleLabel
             // 
             resources.ApplyResources(this.DefaultSubtitleLabel, "DefaultSubtitleLabel");
             this.DefaultSubtitleLabel.Name = "DefaultSubtitleLabel";
+            this.TheToolTip.SetToolTip(this.DefaultSubtitleLabel, resources.GetString("DefaultSubtitleLabel.ToolTip"));
             // 
             // DefaultSubtitle
             // 
@@ -470,17 +537,20 @@
             resources.GetString("DefaultSubtitle.Items9"),
             resources.GetString("DefaultSubtitle.Items10")});
             this.DefaultSubtitle.Name = "DefaultSubtitle";
+            this.TheToolTip.SetToolTip(this.DefaultSubtitle, resources.GetString("DefaultSubtitle.ToolTip"));
             this.DefaultSubtitle.SelectedIndexChanged += new System.EventHandler(this.DefaultSubtitle_SelectedIndexChanged);
             // 
             // ConnectionsNumberLabel
             // 
             resources.ApplyResources(this.ConnectionsNumberLabel, "ConnectionsNumberLabel");
             this.ConnectionsNumberLabel.Name = "ConnectionsNumberLabel";
+            this.TheToolTip.SetToolTip(this.ConnectionsNumberLabel, resources.GetString("ConnectionsNumberLabel.ToolTip"));
             // 
             // ConnectionsNumber
             // 
             resources.ApplyResources(this.ConnectionsNumber, "ConnectionsNumber");
             this.ConnectionsNumber.Name = "ConnectionsNumber";
+            this.TheToolTip.SetToolTip(this.ConnectionsNumber, resources.GetString("ConnectionsNumber.ToolTip"));
             this.ConnectionsNumber.Value = new decimal(new int[] {
             5,
             0,
@@ -492,18 +562,21 @@
             // 
             resources.ApplyResources(this.Seasons, "Seasons");
             this.Seasons.Name = "Seasons";
+            this.TheToolTip.SetToolTip(this.Seasons, resources.GetString("Seasons.ToolTip"));
             this.Seasons.TextChanged += new System.EventHandler(this.Seasons_TextChanged);
             // 
             // Episodes
             // 
             resources.ApplyResources(this.Episodes, "Episodes");
             this.Episodes.Name = "Episodes";
+            this.TheToolTip.SetToolTip(this.Episodes, resources.GetString("Episodes.ToolTip"));
             this.Episodes.TextChanged += new System.EventHandler(this.Episodes_TextChanged);
             // 
             // Attempts
             // 
             resources.ApplyResources(this.Attempts, "Attempts");
             this.Attempts.Name = "Attempts";
+            this.TheToolTip.SetToolTip(this.Attempts, resources.GetString("Attempts.ToolTip"));
             this.Attempts.Value = new decimal(new int[] {
             5,
             0,
@@ -515,11 +588,13 @@
             // 
             resources.ApplyResources(this.AttemptsLabel, "AttemptsLabel");
             this.AttemptsLabel.Name = "AttemptsLabel";
+            this.TheToolTip.SetToolTip(this.AttemptsLabel, resources.GetString("AttemptsLabel.ToolTip"));
             // 
             // ProxyForVideo
             // 
             resources.ApplyResources(this.ProxyForVideo, "ProxyForVideo");
             this.ProxyForVideo.Name = "ProxyForVideo";
+            this.TheToolTip.SetToolTip(this.ProxyForVideo, resources.GetString("ProxyForVideo.ToolTip"));
             this.ProxyForVideo.UseVisualStyleBackColor = true;
             this.ProxyForVideo.CheckedChanged += new System.EventHandler(this.ProxyForVideo_CheckedChanged);
             // 
@@ -527,6 +602,7 @@
             // 
             resources.ApplyResources(this.UseSeasons, "UseSeasons");
             this.UseSeasons.Name = "UseSeasons";
+            this.TheToolTip.SetToolTip(this.UseSeasons, resources.GetString("UseSeasons.ToolTip"));
             this.UseSeasons.UseVisualStyleBackColor = true;
             this.UseSeasons.CheckedChanged += new System.EventHandler(this.UseSeasons_CheckedChanged);
             // 
@@ -534,6 +610,7 @@
             // 
             resources.ApplyResources(this.UseEpisodes, "UseEpisodes");
             this.UseEpisodes.Name = "UseEpisodes";
+            this.TheToolTip.SetToolTip(this.UseEpisodes, resources.GetString("UseEpisodes.ToolTip"));
             this.UseEpisodes.UseVisualStyleBackColor = true;
             this.UseEpisodes.CheckedChanged += new System.EventHandler(this.UseEpisodes_CheckedChanged);
             // 
@@ -541,53 +618,50 @@
             // 
             resources.ApplyResources(this.UseResolution, "UseResolution");
             this.UseResolution.Name = "UseResolution";
+            this.TheToolTip.SetToolTip(this.UseResolution, resources.GetString("UseResolution.ToolTip"));
             this.UseResolution.UseVisualStyleBackColor = true;
             this.UseResolution.CheckedChanged += new System.EventHandler(this.UseResolution_CheckedChanged);
             // 
-            // Season
+            // TheToolTip
             // 
-            resources.ApplyResources(this.Season, "Season");
-            this.Season.Name = "Season";
-            this.Season.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Season.ValueChanged += new System.EventHandler(this.Season_ValueChanged);
+            this.TheToolTip.AutomaticDelay = 60000;
+            this.TheToolTip.AutoPopDelay = 60000;
+            this.TheToolTip.InitialDelay = 500;
+            this.TheToolTip.IsBalloon = true;
+            this.TheToolTip.ReshowDelay = 500;
+            this.TheToolTip.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TheToolTip.ToolTipTitle = "Information";
             // 
-            // Episode
+            // NoProgressBar
             // 
-            resources.ApplyResources(this.Episode, "Episode");
-            this.Episode.Name = "Episode";
-            this.Episode.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.Episode.ValueChanged += new System.EventHandler(this.Episode_ValueChanged);
+            resources.ApplyResources(this.NoProgressBar, "NoProgressBar");
+            this.NoProgressBar.Name = "NoProgressBar";
+            this.TheToolTip.SetToolTip(this.NoProgressBar, resources.GetString("NoProgressBar.ToolTip"));
+            this.NoProgressBar.UseVisualStyleBackColor = true;
+            this.NoProgressBar.CheckedChanged += new System.EventHandler(this.NoProgressBar_CheckedChanged);
             // 
-            // UseSeason
+            // CookiesFile
             // 
-            resources.ApplyResources(this.UseSeason, "UseSeason");
-            this.UseSeason.Name = "UseSeason";
-            this.UseSeason.UseVisualStyleBackColor = true;
-            this.UseSeason.CheckedChanged += new System.EventHandler(this.UseSeason_CheckedChanged);
+            resources.ApplyResources(this.CookiesFile, "CookiesFile");
+            this.CookiesFile.Name = "CookiesFile";
+            this.TheToolTip.SetToolTip(this.CookiesFile, resources.GetString("CookiesFile.ToolTip"));
+            this.CookiesFile.UseVisualStyleBackColor = true;
+            this.CookiesFile.CheckedChanged += new System.EventHandler(this.CookiesFile_CheckedChanged);
             // 
-            // UseEpisode
+            // CookiesFilePath
             // 
-            resources.ApplyResources(this.UseEpisode, "UseEpisode");
-            this.UseEpisode.Name = "UseEpisode";
-            this.UseEpisode.UseVisualStyleBackColor = true;
-            this.UseEpisode.CheckedChanged += new System.EventHandler(this.UseEpisode_CheckedChanged);
+            resources.ApplyResources(this.CookiesFilePath, "CookiesFilePath");
+            this.CookiesFilePath.Name = "CookiesFilePath";
+            this.TheToolTip.SetToolTip(this.CookiesFilePath, resources.GetString("CookiesFilePath.ToolTip"));
+            this.CookiesFilePath.TextChanged += new System.EventHandler(this.CookiesFilePath_TextChanged);
             // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.UseEpisode);
-            this.Controls.Add(this.UseSeason);
-            this.Controls.Add(this.Episode);
-            this.Controls.Add(this.Season);
+            this.Controls.Add(this.CookiesFilePath);
+            this.Controls.Add(this.CookiesFile);
+            this.Controls.Add(this.NoProgressBar);
             this.Controls.Add(this.UseResolution);
             this.Controls.Add(this.UseEpisodes);
             this.Controls.Add(this.UseSeasons);
@@ -613,6 +687,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.TheToolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.AccountGroupBox.ResumeLayout(false);
             this.AccountGroupBox.PerformLayout();
@@ -625,8 +700,6 @@
             this.Hardsub.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConnectionsNumber)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Attempts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Season)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Episode)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -691,10 +764,13 @@
         private System.Windows.Forms.CheckBox UseSeasons;
         private System.Windows.Forms.CheckBox UseEpisodes;
         private System.Windows.Forms.CheckBox UseResolution;
-        private System.Windows.Forms.NumericUpDown Season;
-        private System.Windows.Forms.NumericUpDown Episode;
-        private System.Windows.Forms.CheckBox UseSeason;
-        private System.Windows.Forms.CheckBox UseEpisode;
+        private System.Windows.Forms.ToolTip TheToolTip;
+        private System.Windows.Forms.CheckBox NoProgressBar;
+        private System.Windows.Forms.CheckBox CookiesFile;
+        private System.Windows.Forms.TextBox CookiesFilePath;
+        private System.Windows.Forms.Button SoftsubSaveButton;
+        private System.Windows.Forms.Button HardsubSaveButton;
+        private System.Windows.Forms.Button MakeLoginBatchFile;
     }
 }
 

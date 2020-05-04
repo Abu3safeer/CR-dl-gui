@@ -51,6 +51,9 @@ namespace CR_dl_gui
             DefaultSubtitle.Text = Properties.Settings.Default.DefaultSubtitle;
             ConnectionsNumber.Value = Properties.Settings.Default.ConnectionsNumber;
             Attempts.Value = Properties.Settings.Default.Attempts;
+            NoProgressBar.Checked = Properties.Settings.Default.NoProgressBar;
+            CookiesFile.Checked = Properties.Settings.Default.CookiesFile;
+            CookiesFilePath.Text = Properties.Settings.Default.CookiesFilePath;
 
             UseSeasons.Checked = Properties.Settings.Default.UseSeasons;
             Seasons.Text = Properties.Settings.Default.Seasons;
@@ -61,7 +64,7 @@ namespace CR_dl_gui
 
             // Softsub settings
             AttachFonts.Checked = Properties.Settings.Default.AttacheFonts;
-            LegacyPlayer.Checked = Properties.Settings.Default.LegacyPlayer;
+            // LegacyPlayer.Checked = Properties.Settings.Default.LegacyPlayer; // Removed in 4.0.0
             SubtitltesOnly.Checked = Properties.Settings.Default.SubtitltesOnly;
             ListSubtitles.Checked = Properties.Settings.Default.ListSubtitles;
             SoftsubSaveDirectory.Text = Properties.Settings.Default.SoftsubSaveDirectory;
@@ -187,7 +190,7 @@ namespace CR_dl_gui
             //command += "\"" + SiteLanguage.Text + "\" ";
             if (UseProxy.Checked)
             {
-                command += "--httpProxy \"" + Proxy.Text + "\"";
+                command += "--proxy \"" + Proxy.Text + "\"";
             }
             System.Diagnostics.Process login = new System.Diagnostics.Process();
             login.StartInfo.FileName = "cr-dl.exe";
@@ -224,6 +227,11 @@ namespace CR_dl_gui
             Properties.Settings.Default.UseEpisodes = UseEpisodes.Checked;
             Properties.Settings.Default.Episodes = Episodes.Text;
 
+            Properties.Settings.Default.NoProgressBar = NoProgressBar.Checked;
+
+            Properties.Settings.Default.CookiesFile = CookiesFile.Checked;
+            Properties.Settings.Default.CookiesFilePath = CookiesFilePath.Text;
+
 
             // Softsub settings
             Properties.Settings.Default.SpecifySubtitleLanguages = SpecifySubtitleLanguages.Checked;
@@ -236,16 +244,13 @@ namespace CR_dl_gui
             SL = SL.TrimEnd(',');
             Properties.Settings.Default.SubtitleLanguages = SL;
             Properties.Settings.Default.AttacheFonts = AttachFonts.Checked;
-            Properties.Settings.Default.LegacyPlayer = LegacyPlayer.Checked;
+            // Properties.Settings.Default.LegacyPlayer = LegacyPlayer.Checked; // Removed in 4.0.0
             Properties.Settings.Default.SubtitltesOnly = SubtitltesOnly.Checked;
             Properties.Settings.Default.ListSubtitles = ListSubtitles.Checked;
             Properties.Settings.Default.SoftsubSaveDirectory = SoftsubSaveDirectory.Text;
 
             // Hardsub settings
             Properties.Settings.Default.HardsubSaveDirectory = HardsubSaveDirectory.Text;
-
-
-
            
             Properties.Settings.Default.Save();
             Properties.Settings.Default.Reload();
@@ -309,7 +314,6 @@ namespace CR_dl_gui
             if(UseSeasons.Checked)
             {
                 Seasons.Enabled = true;
-                UseSeason.Checked = false;
             }
             else
             {
@@ -323,39 +327,10 @@ namespace CR_dl_gui
             if (UseEpisodes.Checked)
             {
                 Episodes.Enabled = true;
-                UseEpisode.Checked = false;
             }
             else
             {
                 Episodes.Enabled = false;
-            }
-            CommandPrepare();
-        }
-
-        private void UseSeason_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UseSeason.Checked)
-            {
-                Season.Enabled = true;
-                UseSeasons.Checked = false;
-            }
-            else
-            {
-                Season.Enabled = false;
-            }
-            CommandPrepare();
-        }
-
-        private void UseEpisode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (UseEpisode.Checked)
-            {
-                Episode.Enabled = true;
-                UseEpisodes.Checked = false;
-            }
-            else
-            {
-                Episode.Enabled = false;
             }
             CommandPrepare();
         }
@@ -438,7 +413,8 @@ namespace CR_dl_gui
 
         private void LegacyPlayer_CheckedChanged(object sender, EventArgs e)
         {
-            CommandPrepare();
+            // CommandPrepare();
+            LegacyPlayer.Checked = false;
         }
 
         private void SubtitltesOnly_CheckedChanged(object sender, EventArgs e)
@@ -461,42 +437,52 @@ namespace CR_dl_gui
             string Command = "download ";
 
             // Default subtitle
-            Command += "-l \"" + DefaultSubtitle.Text + "\" ";
+            Command += "--default-sub \"" + DefaultSubtitle.Text + "\" ";
+
+            // Format
+            if (UseResolution.Checked)
+            {
+                Command += "--format \"" + Resolution.Text + "\" ";
+            }
 
             // Proxy
             if (UseProxy.Checked)
             {
-                Command += "--httpProxy \"" + Proxy.Text + "\" ";
+                Command += "--proxy \"" + Proxy.Text + "\" ";
             }
             if (ProxyForVideo.Checked)
             {
-                Command += "--httpProxyCdn \"" + Proxy.Text + "\" ";
+                Command += "--proxy-cdn \"" + Proxy.Text + "\" ";
             }
 
             // Connections
-            Command += "-c \"" + ConnectionsNumber.Text + "\" ";
+            Command += "--connections \"" + ConnectionsNumber.Text + "\" ";
 
             // Attmepts
-            Command += "--maxAttempts \"" + Attempts.Text + "\" ";
+            Command += "--retry \"" + Attempts.Text + "\" ";
 
             // Season
-            if (UseSeason.Checked)
+            if (UseSeasons.Checked)
             {
-                Command += "--season \"" + Season.Text + "\" ";
-            }
-            else if (UseSeasons.Checked)
-            {
-                Command += "--seasons \"" + Seasons.Text + "\" ";
+                Command += "--season \"" + Seasons.Text + "\" ";
             }
 
-            //Episdoes
-            if (UseEpisode.Checked)
+            //Episode
+            if (UseEpisodes.Checked)
             {
-                Command += "--episode \"" + Episode.Text + "\" ";
+                Command += "--episode \"" + Episodes.Text + "\" ";
             }
-            else if (UseEpisodes.Checked)
+
+            // No progress Bar
+            if (NoProgressBar.Checked)
             {
-                Command += "--episodes \"" + Episodes.Text + "\" ";
+                Command += "--no-progress-bar ";
+            }
+
+            // Cookies File path
+            if (CookiesFile.Checked)
+            {
+                Command += "--cookies  \"" + CookiesFilePath.Text + "\" ";
             }
 
             GenerateSoftsubCommand(Command);
@@ -504,15 +490,6 @@ namespace CR_dl_gui
 
         }
 
-        public string AddURLandResolution(string Command)
-        {
-            Command += " \"" + URL.Text + "\"";
-            if(UseResolution.Checked)
-            {
-                Command += " \"" + Resolution.Text + "\"";
-            }
-            return Command;
-        }
 
         public void GenerateSoftsubCommand(string Command)
         {
@@ -525,31 +502,43 @@ namespace CR_dl_gui
                 {
                     SL += SubtitleLanguages.Items[(int)item].ToString() + ",";
                 }
+
                 SL = SL.TrimEnd(',');
 
-                Command += "--subLangs \"" + SL + "\" ";
+                if(SL.Length < 1)
+                {
+                    Command += "--sub-lang \"none\" ";
+                }
+                else
+                {
+                    Command += "--sub-lang \"" + SL + "\" ";
+                }
             }
             
             if(AttachFonts.Checked)
             {
-                Command += "--attachFonts ";
+                Command += "--attach-fonts ";
             }
+            /**
+             * Removed in 4.0.0
+             * 
             if(LegacyPlayer.Checked)
             {
                 Command += "--legacyPlayer ";
             }
+            **/
             if(SubtitltesOnly.Checked)
             {
-                Command += "--subsOnly ";
+                Command += "--subs-only ";
             }
             if (ListSubtitles.Checked)
             {
-                Command += "--listSubs ";
+                Command += "--list-subs ";
             }
 
             Command += "-o \"" + SoftsubSaveDirectory.Text + "\"";
 
-            Command = AddURLandResolution(Command);
+            Command += " \"" + URL.Text + "\"";
 
             SoftsubCommand.Text = Command;
 
@@ -559,7 +548,7 @@ namespace CR_dl_gui
         {
             Command += "--hardsub ";
             Command += "-o \"" + HardsubSaveDirectory.Text + "\"";
-            Command = AddURLandResolution(Command);
+            Command += " \"" + URL.Text + "\"";
             HardsubCommand.Text = Command;
         }
 
@@ -571,6 +560,79 @@ namespace CR_dl_gui
         private void ExecuteHardsubCommand_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("cr-dl.exe",HardsubCommand.Text);
+        }
+
+        private void NoProgressBar_CheckedChanged(object sender, EventArgs e)
+        {
+            CommandPrepare();
+        }
+
+        private void CookiesFile_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CookiesFile.Checked)
+            {
+                CookiesFilePath.Enabled = true;
+            }
+            else
+            {
+                CookiesFilePath.Enabled = false;
+            }
+            CommandPrepare();
+        }
+
+        private void CookiesFilePath_TextChanged(object sender, EventArgs e)
+        {
+            CommandPrepare();
+        }
+
+        private void SoftsubSaveButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SaveSoftsub = new SaveFileDialog();
+            SaveSoftsub.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveSoftsub.Title = Properties.Strings.SaveBatchFile;
+            SaveSoftsub.Filter = Properties.Strings.BatchFile+"|*.bat";
+            //savehardsub.FileName = "Hardsub.bat";
+            if (SaveSoftsub.ShowDialog() == DialogResult.OK)
+            {
+                string[] lines = { "cr-dl " + SoftsubCommand.Text, "pause" };
+                File.WriteAllLines(SaveSoftsub.FileName, lines);
+            }
+        }
+
+        private void HardsubSaveButton_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SaveHardsub = new SaveFileDialog();
+            SaveHardsub.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveHardsub.Title = Properties.Strings.SaveBatchFile;
+            SaveHardsub.Filter = Properties.Strings.BatchFile + "|*.bat";
+            //savehardsub.FileName = "Hardsub.bat";
+            if(SaveHardsub.ShowDialog() == DialogResult.OK)
+            {
+                string[] lines = { "cr-dl " + HardsubCommand.Text, "pause" };
+                File.WriteAllLines(SaveHardsub.FileName, lines);
+            }
+        }
+
+        private void MakeLoginBatchFile_Click(object sender, EventArgs e)
+        {
+            string command = "login ";
+            command += "\"" + EmailOrUserName.Text + "\" ";
+            command += "\"" + Password.Text + "\" ";
+            //command += "\"" + SiteLanguage.Text + "\" ";
+            if (UseProxy.Checked)
+            {
+                command += "--proxy \"" + Proxy.Text + "\"";
+            }
+            SaveFileDialog SaveLogin = new SaveFileDialog();
+            SaveLogin.InitialDirectory = Directory.GetCurrentDirectory();
+            SaveLogin.Title = Properties.Strings.SaveBatchFile;
+            SaveLogin.Filter = "Batch file|*.bat";
+            //savehardsub.FileName = "Hardsub.bat";
+            if (SaveLogin.ShowDialog() == DialogResult.OK)
+            {
+                string[] lines = { "cr-dl " + command, "pause" };
+                File.WriteAllLines(SaveLogin.FileName, lines);
+            }
         }
     }
 }
