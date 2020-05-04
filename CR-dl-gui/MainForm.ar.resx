@@ -315,6 +315,9 @@
   <data name="Hardsub.Text" xml:space="preserve">
     <value>هارد سب</value>
   </data>
+  <data name="HardsubSaveButton.Text" xml:space="preserve">
+    <value>إنشاء ملف تنفيذي</value>
+  </data>
   <data name="ExecuteHardsubCommand.Text" xml:space="preserve">
     <value>تنزيل</value>
   </data>
